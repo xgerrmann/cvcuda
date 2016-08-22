@@ -17,13 +17,13 @@ int main (int argc, char* argv[])
     try
     {
 		std::string fname = "image.png";
-		cv::Mat src_host = imread(fname, IMREAD_GRAYSCALE);
+		cv::Mat src_host = imread(fname, CV_LOAD_IMAGE_COLOR);
 		cv::cuda::GpuMat dst, src;
-//        src.upload(src_host);
-//        cv::gpu::threshold(src, dst, 128.0, 255.0, THRESH_BINARY);
-//        cv::Mat result_host(dst);
-//        cv::imshow("Result", result_host);
-//        cv::waitKey();
+		src.upload(src_host);
+		cv::cuda::threshold(src, dst, 128.0, 255.0, THRESH_BINARY);
+		cv::Mat result_host(dst);
+		cv::imshow("Result", result_host);
+		cv::waitKey();
     }
     catch(const cv::Exception& ex)
     {
