@@ -13,7 +13,9 @@ message("${PROJECT_NAME}")
 add_executable(tester test.cpp)
 
 # OPENCV
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 3 REQUIRED)
+message(${OpenCV_INCLUDE_DIRS})
+message(${OpenCV_LIBS})
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 ## CUDA
